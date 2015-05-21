@@ -1,0 +1,7 @@
+bin/
+.settings
+
+src/wfmanager/StrTrigger.java
+src/wfmanager/WFTask1.java
+src/wfmanager/WFTest.java
+src/wfmanager/WFTask2.java
