@@ -10,7 +10,8 @@ public class WFTask1 extends WFTask {
 	}
 	
 	private void t1(){
-		System.out.println("I am task number 1");
+		for(int i = 10; i > 0; i--)
+			System.out.println("Task1 counting backwards - " + i);
 	}
 
 }
