@@ -1,6 +1,6 @@
 package wfmanager;
 
-public class Condition {
+public class Condition implements Evaluateable {
 	Clause clause;
 	String name;
 	
@@ -12,4 +12,9 @@ public class Condition {
 	public String getName(){
 		return this.name;
 	}
-}	
+
+	@Override
+	public boolean evaluate() {
+		return clause.evaluate();
+	}
+}
