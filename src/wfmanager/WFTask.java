@@ -1,7 +1,7 @@
 package wfmanager;
 
 public abstract class WFTask implements Runnable {
-	private Context lCtx;
+	private LocalContext lCtx;
 	private Context gCtx;
 	private TaskState state;
 	
@@ -9,7 +9,7 @@ public abstract class WFTask implements Runnable {
 		this.state = TaskState.WAITING;
 	}
 	
-	public void passLocalContext(Context workflowLocalCtx){
+	public void passLocalContext(LocalContext workflowLocalCtx){
 		this.lCtx = workflowLocalCtx;
 	}
 

@@ -5,12 +5,12 @@ import java.util.Map;
 
 public class ContextManager {
 	private Context gContext;
-	private Map<String, Context> lContexts;
+	private Map<String, LocalContext> lContexts;
 	private static ContextManager instance;
 
 	private ContextManager(){
 		gContext = new Context();
-		lContexts = new HashMap<String, Context>();
+		lContexts = new HashMap<String, LocalContext>();
 	}
 	
 	public static ContextManager getCManager(){
@@ -29,7 +29,7 @@ public class ContextManager {
 	}
 	
 	public void addContextForWF(String wfName){
-		lContexts.put(wfName, new Context());
+		lContexts.put(wfName, new LocalContext());
 	}
 	
 	public void removeContextForWF(String wfName){

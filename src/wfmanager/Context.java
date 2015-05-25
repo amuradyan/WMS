@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Context {
-	private Map<String, Object> ctxData;
+	protected Map<String, Object> ctxData;
 
 	public Context(){
 		ctxData = new HashMap<String, Object>();
