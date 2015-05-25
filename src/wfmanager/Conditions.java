@@ -4,26 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Conditions implements Evaluateable {
-	private List<Condition> preconditions;
-	private List<Condition> postconditions;
+	private List<Condition> conditions;
 	
 	public Conditions(){
-		preconditions = new ArrayList<Condition>();		
-		postconditions = new ArrayList<Condition>();
+		conditions = new ArrayList<Condition>();		
 	}
 	
-	public void addPrecondition(Condition preCon){
-		preconditions.add(preCon);
-	}
-
-	public void addPostcondition(Condition postCon){
-		postconditions.add(postCon);
+	public void addCondition(Condition preCon){
+		conditions.add(preCon);
 	}
 
 	@Override
 	public boolean evaluate() {
 		boolean retval = false;
-		for(Condition cond : preconditions)
+		for(Condition cond : conditions)
 			retval &= cond.evaluate();
 		
 		return retval;

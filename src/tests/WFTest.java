@@ -1,6 +1,9 @@
 package tests;
 
+import wfmanager.AndCaluse;
 import wfmanager.Conditions;
+import wfmanager.NotClause;
+import wfmanager.OrClause;
 import wfmanager.Predicate;
 import wfmanager.WFManager;
 import wfmanager.Workflow;
@@ -15,7 +18,8 @@ public class WFTest {
 		wf.addTask(WFTask1.class);
 		
 		Conditions WFTask2Conditions = new Conditions();
-//		WFTask2Conditions.addPrecondition(new TaskStateCondition(WFTask2.class, TaskState.FINISHED));
+//		WFTask2Conditions.addCondition(new AndCaluse(new OrClause(), new AndCaluse(new NotClause())));
+		
 		wf.addTask(WFTask2.class, WFTask2Conditions);
 		
 		wf.start();
