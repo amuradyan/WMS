@@ -1,15 +1,19 @@
 package wfmanager;
 
-public abstract class WFTask {
-	private WorkflowContext lCtx;
-	private WorkflowContext gCtx;
+public abstract class WFTask implements Runnable {
+	private Context lCtx;
+	private Context gCtx;
 	private TaskState state;
 	
-	public void passLocalContext(WorkflowContext workflowLocalCtx){
+	public WFTask(){
+		this.state = TaskState.WAITING;
+	}
+	
+	public void passLocalContext(Context workflowLocalCtx){
 		this.lCtx = workflowLocalCtx;
 	}
 
-	public void passGlobalContext(WorkflowContext workflowGlobalCtx){
+	public void passGlobalContext(Context workflowGlobalCtx){
 		gCtx = workflowGlobalCtx;
 	}
 	
@@ -23,6 +27,7 @@ public abstract class WFTask {
 		state = TaskState.FINISHED;
 	}
 	
+	@Override
 	public void run(){
 		setStarted();
 		execute();

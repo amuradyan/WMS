@@ -6,11 +6,13 @@ import java.util.Map;
 public class WFManager {
 	private Map<String, Workflow> currentWFs;
 	private static WFManager instance;
-	private static WorkflowContext gCtx;
+	private ContextManager ctxManager;
+	private ExecutorService execService;
 	
 	private WFManager(){
 		currentWFs = new HashMap<>();
-		gCtx = new WorkflowContext();
+		ctxManager = ContextManager.getCManager();
+		execService = ExecutorService.getInstance();
 	}
 	
 	public static WFManager getInstance(){
@@ -32,9 +34,18 @@ public class WFManager {
 		return currentWFs;				
 	}
 	
+	// TODO: This still does not remove the flags set by the 
+	// 		 removed task from the global context. Look into it
+	public void removeWF(String wfName){
+		currentWFs.remove(wfName);
+		ctxManager.removeContextForWF(wfName);
+	}
+
+	// TODO: I don't like the way it's done now
 	public Workflow createNewWF(String wfName){
 		Workflow wf = new Workflow(wfName);
-		wf.setGlobalContext(gCtx);
+		ctxManager.addContextForWF(wfName);
+		execService.registerExecutor(wf);
 		addWorkflow(wf);
 		System.out.println("Workflow " + wfName + " created and stored.");
 		
