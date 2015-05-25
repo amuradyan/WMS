@@ -10,12 +10,12 @@ public class Executor {
 		this.wf = wf;
 	}
 	
-	public void start(){
+	public void start() {
 		WFTask task = null;
-		Map<Class<? extends WFTask>, Conditions> tasks = wf.getTasks();
+		Map<Class<? extends WFTask>, Condition> tasks = wf.getTasks();
 		
 		if (tasks != null && !tasks.isEmpty()){
-			for(Map.Entry<Class<? extends WFTask>, Conditions> entry : tasks.entrySet()) {
+			for(Map.Entry<Class<? extends WFTask>, Condition> entry : tasks.entrySet()) {
 				try {
 					if (entry.getValue() != null && entry.getValue().evaluate()) {
 						Class<? extends WFTask> currClass = entry.getKey();

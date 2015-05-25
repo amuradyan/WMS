@@ -5,11 +5,11 @@ import java.util.Map;
 
 public class Workflow {
 	private String name;
-	private Map<Class<? extends WFTask>, Conditions> tasks;
+	private Map<Class<? extends WFTask>, Condition> tasks;
 	
 	public Workflow(String name){
 		this.name = name;
-		tasks = new HashMap<Class<? extends WFTask>, Conditions>();
+		tasks = new HashMap<Class<? extends WFTask>, Condition>();
 	}
 	
 	public String getName() {
@@ -23,11 +23,11 @@ public class Workflow {
 		addTask(task, null);
 	}
 
-	public void addTask(Class<? extends WFTask> task, Conditions cond){
+	public void addTask(Class<? extends WFTask> task, Condition cond){
 		tasks.put(task, cond);
 	}
 	
-	public Map<Class<? extends WFTask>, Conditions> getTasks(){
+	public Map<Class<? extends WFTask>, Condition> getTasks(){
 		return tasks;
 	}
 

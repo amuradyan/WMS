@@ -1,8 +1,7 @@
 package tests;
 
-import wfmanager.AndCaluse;
-import wfmanager.Conditions;
-import wfmanager.NotClause;
+import wfmanager.Clause;
+import wfmanager.Condition;
 import wfmanager.OrClause;
 import wfmanager.Predicate;
 import wfmanager.WFManager;
@@ -17,10 +16,10 @@ public class WFTest {
 		Workflow wf = manager.createNewWF(wfName);
 		wf.addTask(WFTask1.class);
 		
-		Conditions WFTask2Conditions = new Conditions();
-//		WFTask2Conditions.addCondition(new AndCaluse(new OrClause(), new AndCaluse(new NotClause())));
+		Clause testClause = new OrClause(new Predicate<Integer>(), new Predicate<Integer>());
+		Condition cond = new Condition(testClause, "testCond");
 		
-		wf.addTask(WFTask2.class, WFTask2Conditions);
+		wf.addTask(WFTask2.class, cond);
 		
 		wf.start();
 		
