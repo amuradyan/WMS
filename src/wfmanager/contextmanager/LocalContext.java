@@ -1,7 +1,9 @@
-package wfmanager;
+package wfmanager.contextmanager;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import wfmanager.TaskState;
 
 public class LocalContext extends Context {
 	protected Map<String, TaskState> taskStates;

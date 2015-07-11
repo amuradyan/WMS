@@ -1,16 +1,11 @@
-package wfmanager;
+package wfmanager.logic;
 
-public class Clause implements Evaluateable {
+public abstract class Clause extends Evaluateable {
 	protected Evaluateable right;
 	protected Evaluateable left;
 	
 	public Clause(Evaluateable right, Evaluateable left) {
 		this.right = right;
 		this.left = left;
-	}
-	
-	@Override
-	public boolean evaluate() {
-		return false;
 	}
 }

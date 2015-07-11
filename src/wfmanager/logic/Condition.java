@@ -1,6 +1,8 @@
-package wfmanager;
+package wfmanager.logic;
 
-public class Condition implements Evaluateable {
+import wfmanager.contextmanager.Context;
+
+public class Condition extends Evaluateable {
 	Clause clause;
 	String name;
 	
@@ -14,7 +16,7 @@ public class Condition implements Evaluateable {
 	}
 
 	@Override
-	public boolean evaluate() {
-		return clause.evaluate();
+	public boolean evaluate(Context ctx) {
+		return clause.evaluate(ctx);
 	}
 }

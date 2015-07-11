@@ -1,4 +1,4 @@
-package wfmanager;
+package wfmanager.contextmanager;
 
 import java.util.HashMap;
 import java.util.Map;

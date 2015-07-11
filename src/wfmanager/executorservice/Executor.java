@@ -1,7 +1,11 @@
-package wfmanager;
+package wfmanager.executorservice;
 
 import java.lang.reflect.Constructor;
 import java.util.Map;
+
+import wfmanager.WFTask;
+import wfmanager.Workflow;
+import wfmanager.logic.Condition;
 
 public class Executor {
 	private Workflow wf;
@@ -17,13 +21,13 @@ public class Executor {
 		if (tasks != null && !tasks.isEmpty()){
 			for(Map.Entry<Class<? extends WFTask>, Condition> entry : tasks.entrySet()) {
 				try {
-					if (entry.getValue() != null && entry.getValue().evaluate()) {
+					//if (entry.getValue() != null && entry.getValue().evaluate()) {
 						Class<? extends WFTask> currClass = entry.getKey();
 						Constructor<? extends WFTask> ctor = currClass
 								.getConstructor();
 						task = ctor.newInstance();
 						new Thread(task).start();
-					}
+					//}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

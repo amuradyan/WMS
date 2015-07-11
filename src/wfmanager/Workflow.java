@@ -3,6 +3,10 @@ package wfmanager;
 import java.util.HashMap;
 import java.util.Map;
 
+import wfmanager.executorservice.Executor;
+import wfmanager.executorservice.ExecutorService;
+import wfmanager.logic.Condition;
+
 public class Workflow {
 	private String name;
 	private Map<Class<? extends WFTask>, Condition> tasks;

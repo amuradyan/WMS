@@ -1,7 +1,9 @@
-package wfmanager;
+package wfmanager.executorservice;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import wfmanager.Workflow;
 
 public class ExecutorService {
 	private static ExecutorService instance;

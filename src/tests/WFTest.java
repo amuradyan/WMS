@@ -1,11 +1,13 @@
 package tests;
 
-import wfmanager.Clause;
-import wfmanager.Condition;
-import wfmanager.OrClause;
-import wfmanager.Predicate;
+import java.lang.reflect.ParameterizedType;
+
 import wfmanager.WFManager;
 import wfmanager.Workflow;
+import wfmanager.logic.Clause;
+import wfmanager.logic.Condition;
+import wfmanager.logic.OrClause;
+import wfmanager.logic.Predicate;
 
 public class WFTest {
 
@@ -15,11 +17,13 @@ public class WFTest {
 		
 		Workflow wf = manager.createNewWF(wfName);
 		wf.addTask(WFTask1.class);
+		Is7Predicate is7 = new Is7Predicate("asd");
 		
-		Clause testClause = new OrClause(new Predicate<Integer>(), new Predicate<Integer>());
-		Condition cond = new Condition(testClause, "testCond");
+//		Clause testClause = new OrClause(new Predicate<Integer>("userSkip"), new Predicate<Integer>("isEADBReceived"));
+//		Condition cond = new Condition(testClause, "testCond");
+//		System.out.println(((ParameterizedType)is7.getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
 		
-		wf.addTask(WFTask2.class, cond);
+		wf.addTask(WFTask2.class);
 		
 		wf.start();
 		

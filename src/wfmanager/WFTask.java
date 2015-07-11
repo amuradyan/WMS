@@ -1,5 +1,8 @@
 package wfmanager;
 
+import wfmanager.contextmanager.Context;
+import wfmanager.contextmanager.LocalContext;
+
 public abstract class WFTask implements Runnable {
 	private LocalContext lCtx;
 	private Context gCtx;

@@ -3,6 +3,9 @@ package wfmanager;
 import java.util.HashMap;
 import java.util.Map;
 
+import wfmanager.contextmanager.ContextManager;
+import wfmanager.executorservice.ExecutorService;
+
 public class WFManager {
 	private Map<String, Workflow> currentWFs;
 	private static WFManager instance;
