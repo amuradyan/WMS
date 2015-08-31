@@ -1,10 +1,10 @@
 package wfmanager.logic;
 
-public abstract class Clause extends Evaluateable {
+public abstract class BinaryClause extends Evaluateable {
 	protected Evaluateable right;
 	protected Evaluateable left;
 	
-	public Clause(Evaluateable right, Evaluateable left) {
+	public BinaryClause(Evaluateable right, Evaluateable left) {
 		this.right = right;
 		this.left = left;
 	}

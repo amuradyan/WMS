@@ -3,7 +3,7 @@ package wfmanager.logic;
 import wfmanager.contextmanager.Context;
 
 
-public class AndCaluse extends Clause {
+public class AndCaluse extends BinaryClause {
 	
 	public AndCaluse(Evaluateable right, Evaluateable left) {
 		super(right, left);

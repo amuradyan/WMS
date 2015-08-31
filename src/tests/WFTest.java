@@ -4,29 +4,36 @@ import java.lang.reflect.ParameterizedType;
 
 import wfmanager.WFManager;
 import wfmanager.Workflow;
-import wfmanager.logic.Clause;
+import wfmanager.contextmanager.Context;
+import wfmanager.contextmanager.ContextManager;
+import wfmanager.logic.BinaryClause;
 import wfmanager.logic.Condition;
+import wfmanager.logic.NotClause;
 import wfmanager.logic.OrClause;
 import wfmanager.logic.Predicate;
+import wfmanager.logic.UnitClause;
 
 public class WFTest {
-
-	public static void main(String[] args){
-		WFManager manager = WFManager.getInstance();
-		String wfName = "TestWF";
-		
-		Workflow wf = manager.createNewWF(wfName);
-		wf.addTask(WFTask1.class);
-		Is7Predicate is7 = new Is7Predicate("asd");
-		
-//		Clause testClause = new OrClause(new Predicate<Integer>("userSkip"), new Predicate<Integer>("isEADBReceived"));
-//		Condition cond = new Condition(testClause, "testCond");
-//		System.out.println(((ParameterizedType)is7.getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
-		
-		wf.addTask(WFTask2.class);
-		
-		wf.start();
-		
-		System.out.println(manager.getWFByName(wfName).getName());
-	}
+  
+  public static void main(String[] args) {
+    WFManager manager = WFManager.getInstance();
+    String wfName = "TestWF";
+    
+    Workflow wf = manager.createNewWF(wfName);
+    Is7Predicate is7 = new Is7Predicate("asd");
+    
+    UnitClause testClause = new NotClause(is7);
+    Condition cond = new Condition(testClause, "testCond");
+    // System.out.println(((ParameterizedType)is7.getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
+    Context ctx = ContextManager.getCManager().getContextForWF("TestWF");
+    
+    ctx.setFlag("asd", 7);
+    
+    wf.addTask(WFTask1.class, cond);
+    wf.addTask(WFTask2.class);
+    
+    wf.start();
+    
+    System.out.println(manager.getWFByName(wfName).getName());
+  }
 }
