@@ -2,7 +2,7 @@ package wfmanager.logic;
 
 import wfmanager.contextmanager.Context;
 
-public class OrClause extends Clause {
+public class OrClause extends BinaryClause {
 	
 	public OrClause(Evaluateable right, Evaluateable left) {
 		super(right, left);
