@@ -24,7 +24,7 @@ public class ContextManager {
     return gContext;
   }
   
-  public Context getContextForWF(String wfName) {
+  public LocalContext getContextForWF(String wfName) {
     return lContexts.get(wfName);
   }
   

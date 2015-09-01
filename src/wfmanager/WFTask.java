@@ -4,9 +4,9 @@ import wfmanager.contextmanager.Context;
 import wfmanager.contextmanager.LocalContext;
 
 public abstract class WFTask implements Runnable {
-  private LocalContext lCtx;
-  private Context gCtx;
-  private TaskState state;
+  protected LocalContext lCtx;
+  protected Context gCtx;
+  protected TaskState state;
   
   public WFTask() {
     this.state = TaskState.WAITING;
@@ -39,4 +39,12 @@ public abstract class WFTask implements Runnable {
   }
   
   public abstract void execute();
+  
+  public void setLocalContext(LocalContext lCtx) {
+    this.lCtx = lCtx;
+  }
+  
+  public void setGlobalContext(Context gCtx) {
+    this.gCtx = gCtx;
+  }
 }

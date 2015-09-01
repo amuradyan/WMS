@@ -13,5 +13,4 @@ public class WFTask1 extends WFTask {
     for (int i = 10; i > 0; i--)
       System.out.println("Task1 counting backwards - " + i);
   }
-  
 }
