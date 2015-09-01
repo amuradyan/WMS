@@ -22,9 +22,19 @@ public class Context {
   @Override
   public boolean equals(Object obj) {
     Context that = null;
-    if (obj != null && obj instanceof Context)
+    if (obj != null && obj instanceof Context) {
       that = (Context) obj;
+      return this.ctxData == that.ctxData;
+    } else 
+      return false;
+  }
+  
+  @Override
+  public int hashCode() {
+    int hash = 1;
     
-    return this.ctxData == that.ctxData;
+    hash = hash * 31 + ctxData.hashCode();
+    
+    return hash;
   }
 }

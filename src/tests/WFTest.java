@@ -23,14 +23,16 @@ public class WFTest {
     Is7Predicate is7 = new Is7Predicate("asd");
     
     UnitClause testClause = new NotClause(is7);
-    Condition cond = new Condition(testClause, "testCond");
+    
+    Condition c1 = new Condition(testClause);
+    Condition c2 = new Condition(testClause);
     // System.out.println(((ParameterizedType)is7.getClass().getGenericSuperclass()).getActualTypeArguments()[0]);
     Context ctx = ContextManager.getCManager().getContextForWF("TestWF");
     
-    ctx.setFlag("asd", 7);
+    ctx.setFlag("asd", 9);
     
-    wf.addTask(WFTask1.class, cond);
-    wf.addTask(WFTask2.class);
+    wf.addTask(WFTask1.class, c1);
+    wf.addTask(WFTask2.class, c2);
     
     wf.start();
     
